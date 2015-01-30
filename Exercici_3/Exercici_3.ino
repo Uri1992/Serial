@@ -20,7 +20,7 @@
  //******  Loop  **********************************************************
  void loop ()
  {
-  Serial.print("Hello world!");  //Mostra per pantalla "Hello world"
+  Serial.println("Hello world!");  //Mostra per pantalla "Hello world"
   delay(1000);  //Espera 1000 ms
  }
   

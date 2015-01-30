@@ -13,8 +13,8 @@
  //*******  Setup  ********************************************************
  void setup()
  {
-  Serial.begin(9600);       
-  Serial.println("Hello world!");
+  Serial.begin(9600);  //Obre el port serie a 9600 bps       
+  Serial.println("Hello world!");  //Mostra per pantalla "Hello world"
  }
 
 
