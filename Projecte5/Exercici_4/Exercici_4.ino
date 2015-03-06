@@ -9,32 +9,37 @@
 
  //******  Variables  *****************************************************
 
-int valor;           
+int hores;
+int eurosPerH = 20;
+int resultatBrut;
+int resultatFinal;
 
  //*******  Setup  ********************************************************
   void setup()               
  {  
   Serial.begin(9600);  
-  Serial.print("Entrar un numero, ");   
+  Serial.println("Quantes hores de treball?");
  }
  //******  Loop  **********************************************************
  void loop ()
  {
    while (Serial.available() > 0) {  
-    valor = Serial.parseFloat(); 
-    Serial.print(valor);
-    if (valor % 2 == 0)
-      {
-      Serial.println(" es parell");  
-      }
+    hores = Serial.parseInt(); 
+    if (hores <38)
+    {
+    resultatBrut = eurosPerH * hores;
+    }
+    else
+    {
+    resultatBrut = eurosPerH * 1.5 * hores;
+    }
     
-    else 
-      { 
-      Serial.println(" es senar");
-      }
-    if (Serial.read() == '\n')
+    
+    Serial.println(resultatBrut);
+
+    Serial.read() == '\n';
     Serial.println("");
-    Serial.print("Entrar un numero, ");
+    Serial.println("Quantes hores de treball?");
   }
  }
   
