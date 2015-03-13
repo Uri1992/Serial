@@ -9,40 +9,32 @@
 
  //******  Variables  *****************************************************
 
-int valor;           
-int xifres;
-int resultat;
+int numero;
 
  //*******  Setup  ********************************************************
   void setup()               
  {  
   Serial.begin(9600);  
-  Serial.println("Entrar un numero");   
+  Serial.print("Entrar numeros un per un (0 per acabar): ");
  }
  //******  Loop  **********************************************************
  void loop ()
  {
-    while (Serial.available() > 0) {  
-    valor = Serial.parseInt(); 
-    
-    Serial.print("El numero "); 
-    Serial.print(valor);  
-    Serial.print(" te ");
-    
-    resultat = valor;
-    
-    for  (xifres = 0; resultat != 0; xifres++)
+   while (Serial.available() > 0) {  
+     numero = Serial.parseInt();
+     Serial.print(numero);
+     Serial.print("-");
+   
+   if (numero != 0)
     {
-      resultat = valor / 10 ;
-      valor = valor / 10;
+    for (int i = 0; numero == 0; i++)
+      {
+      Serial.print(numero);
+      Serial.print("-");
+      }
     }
     
-    Serial.print(xifres);
-    Serial.println(" xifres");
-    
     Serial.read() == '\n';
-    Serial.println("");
-    Serial.println("Entrar un numero");
   }
  }
   

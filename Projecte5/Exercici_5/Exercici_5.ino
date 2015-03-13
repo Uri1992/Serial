@@ -9,40 +9,51 @@
 
  //******  Variables  *****************************************************
 
-int valor;           
-int xifres;
-int resultat;
+int cm;
 
  //*******  Setup  ********************************************************
   void setup()               
  {  
   Serial.begin(9600);  
-  Serial.println("Entrar un numero");   
+  Serial.println("Quina mida en cm?");
  }
  //******  Loop  **********************************************************
  void loop ()
  {
     while (Serial.available() > 0) {  
-    valor = Serial.parseInt(); 
+    cm = Serial.parseInt(); 
+    Serial.print("El cargol amb mida de ");
+    Serial.print(cm);
+    Serial.print(" cm es ");
     
-    Serial.print("El numero "); 
-    Serial.print(valor);  
-    Serial.print(" te ");
+    if (cm < 3 && cm > 0)
+      {
+      Serial.print("petit");
+      }
+      
+    else if (cm < 5 && cm > 2)
+      {
+      Serial.print("mitja");
+      } 
+     
+    else if (cm < 8 && cm > 4) 
+      {
+      Serial.print("gran");
+      }  
+        
+    else if (cm < 11 && cm > 7)
+      {
+      Serial.print("molt gran");
+      }
     
-    resultat = valor;
-    
-    for  (xifres = 0; resultat != 0; xifres++)
-    {
-      resultat = valor / 10 ;
-      valor = valor / 10;
-    }
-    
-    Serial.print(xifres);
-    Serial.println(" xifres");
+    else
+      {
+      Serial.print("incorrecte"); 
+      } 
     
     Serial.read() == '\n';
     Serial.println("");
-    Serial.println("Entrar un numero");
+    Serial.println("Quina mida en cm?");
   }
  }
   

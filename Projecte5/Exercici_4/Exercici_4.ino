@@ -11,8 +11,12 @@
 
 int hores;
 int eurosPerH = 20;
-int resultatBrut;
-int resultatFinal;
+int eurosDeMesPerH = 30;
+int horesDeMes;
+int resultatN;
+int resultatDeMes;
+float resultatBrut;
+float resultatFinal;
 
  //*******  Setup  ********************************************************
   void setup()               
@@ -23,19 +27,33 @@ int resultatFinal;
  //******  Loop  **********************************************************
  void loop ()
  {
-   while (Serial.available() > 0) {  
+    while (Serial.available() > 0) {  
     hores = Serial.parseInt(); 
+    Serial.print(hores);
+    Serial.println(" hores de treball");
     if (hores <38)
     {
-    resultatBrut = eurosPerH * hores;
+      resultatBrut = eurosPerH * hores;
     }
     else
     {
-    resultatBrut = eurosPerH * 1.5 * hores;
+      horesDeMes = hores - 37;
+      resultatN = eurosPerH * 37;
+      resultatDeMes= eurosDeMesPerH * horesDeMes; 
+      resultatBrut = resultatN + resultatDeMes;
     }
     
+    if (resultatBrut <= 800)
+    {
+      resultatFinal = resultatBrut - resultatBrut * 0.05;
+    }
+    else
+    {
+      resultatFinal = resultatBrut - resultatBrut * 0.1;  
+    }
     
-    Serial.println(resultatBrut);
+    Serial.print(resultatFinal);
+    Serial.println(" euros");
 
     Serial.read() == '\n';
     Serial.println("");
